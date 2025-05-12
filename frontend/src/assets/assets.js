@@ -36,9 +36,13 @@ import General_physician from './General_physician.svg'
 import Gynecologist from './Gynecologist.svg'
 import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
+import mediconnect from './mediconnect.jpg'
+import mediconnects from './mediconnect-2.png'
 
 
 export const assets = {
+    mediconnects,
+    mediconnect,
     appointment_img,
     header_img,
     group_profiles,

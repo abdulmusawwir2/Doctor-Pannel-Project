@@ -40,15 +40,16 @@ const Appointment = () => {
     for (let i = 0; i < 7; i++) {
       // Create a new date object for the current day in the loop
       let currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i); // Adjust to the correct day (today + i days)
+      currentDate.setDate(today.getDate() + i); //gets future 7 days from today
 
       // Set the end time of the current day to 9:00 PM
-      let endTime = new Date(currentDate);
+      let endTime = new Date(currentDate)
       endTime.setHours(21, 0, 0, 0); // 9:00 PM
 
       // Adjust the start time based on whether it's today or a future day
+
+      // If it's today, set start time to the next hour or 10:00 AM, whichever is later
       if (today.getDate() === currentDate.getDate()) {
-        // If it's today, set start time to the next hour or 10:00 AM, whichever is later
         currentDate.setHours(
           currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
         );
@@ -85,13 +86,9 @@ const Appointment = () => {
             time: formattedTime, // Human-readable time string
           });
         }
-
-
-        
         // Increment the current time by 30 minutes for the next slot
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
-
       // Add the generated time slots for the current day to the main array
       allTimeSlots.push(timeSlots);
     }
@@ -152,7 +149,7 @@ const Appointment = () => {
         <div>
           <img
             src={docInfo.image}
-            className="bg-blue-500 w-full sm:max-w-72 rounded-lg"
+            className="bg-primary w-full sm:max-w-72 rounded-lg"
             alt=""
           />
         </div>

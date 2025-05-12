@@ -34,7 +34,6 @@ const Login = () => {
           email,
           password,
         });
-        console.log("hii");
 
         if (data.success) {
           console.log(data.token);

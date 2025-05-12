@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary': "#FFC0CB"
+        // pink
+      },
       gridTemplateColumns: {
         // Corrected syntax for custom grid template
         'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
@@ -14,3 +18,5 @@ export default {
   },
   plugins: [],
 }
+
+// #5f6FFF blue
