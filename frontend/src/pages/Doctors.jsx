@@ -53,7 +53,7 @@ const Doctors = () => {
                 : ""
             }`}
           >
-            General physician
+            General Physician
           </p>
           <p
             onClick={() =>

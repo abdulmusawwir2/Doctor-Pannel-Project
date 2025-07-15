@@ -3,6 +3,8 @@ import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom'
+
 const MyAppointments = () => {
   const { backendUrl, token, getDoctorsData } = useContext(AppContext);
   const [appointments, setappointments] = useState([]);
@@ -22,6 +24,7 @@ const MyAppointments = () => {
     "DEC",
   ];
 
+  const navigate = useNavigate()
   const slotDateFormat = ( slotDate ) => {
     const dateArray = slotDate.split('_')
     return dateArray[0]+ " " + months[Number(dateArray[1])]+ " " + dateArray[2]
@@ -61,6 +64,52 @@ const MyAppointments = () => {
     }
   }
 
+  const initPay = async (order) => {
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: 'Appointment Payment',
+      description: "Appointment Payment",
+      order_id: order.id,
+      receipt: order.receipt,
+      handler: async (response) => {
+        console.log(response)
+
+        try {
+          const { data } = await axios.post(backendUrl + '/api/user/verifyRazorpay', response, { headers: { token } })
+          if (data.success) {
+            getUserAppointments()
+            navigate('/my-appointments')
+          }
+
+        } catch (error) {
+          console.log(error)
+          toast.error(error.message)
+
+        }
+
+
+
+      }
+    }
+    const rzp = new window.Razorpay(options)
+    rzp.open()
+  }
+
+  const appointmentRazorpay = async (appointmentId) => {
+    try {
+      const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
+      if (data.success) {
+        console.log(data.order)
+        initPay(data.order)
+      }
+    }
+    catch (err) {
+
+    }
+  }
+
   useEffect(() => {
     if (token) {
       getUserAppointments();
@@ -93,7 +142,7 @@ const MyAppointments = () => {
               <p className="text-zinc-700 font-medium mt-1"> Address</p>
               <p className="text-xs"> {items.docData.address.line1}</p>
               <p className="text-xs"> {items.docData.address.line2}</p>
-              <p text-sx mt-1m>
+              <p className="text-sm mt-1">
                 <span className="text-sm text-neutral-700 font-medium ">
                   Date & Time:
                 </span>
@@ -103,8 +152,9 @@ const MyAppointments = () => {
 
             <div></div>
             <div className="flex flex-col gap-2 justify-end">
-              {!items.cancelled &&  (
-                <button className="text-sm  text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300">
+              {!items.cancelled && items.payment && <button className="sm:min-w-48 py-2 border rounded text-stone-500 bg-indigo-50">Paid</button>}
+              {!items.cancelled && !items.payment && (
+                <button onClick={() => appointmentRazorpay(items._id)} className="text-sm  text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300">
                   Pay Online
                 </button>
               )}
@@ -126,3 +176,6 @@ const MyAppointments = () => {
 };
 
 export default MyAppointments;
+
+
+// () => cancelAppointment(items._id) is a function that will be triggered on button click.
