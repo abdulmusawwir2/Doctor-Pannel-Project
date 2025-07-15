@@ -133,7 +133,7 @@ const AddDoctor = () => {
               onChange={(e) => setSpecialty(e.target.value)}
               className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
             >
-              <option value="General Physician">General physician</option>
+              <option value="General Physician">General Physician</option>
               <option value="Gynecologist">Gynecologist</option>
               <option value="Dermatologist">Dermatologist</option>
               <option value="Neurologist">Neurologist</option>
