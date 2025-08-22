@@ -39,8 +39,8 @@ const Appointment = () => {
     // Loop through the next 7 days
     for (let i = 0; i < 7; i++) {
       // Create a new date object for the current day in the loop
-      let currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i); //gets future 7 days from today
+      let currentDate = new Date(today);   
+      currentDate.setDate(today.getDate() + i); //gets future 7 days from today     //getDate return just date: eg: 11
 
       // Set the end time of the current day to 9:00 PM
       let endTime = new Date(currentDate)
@@ -72,13 +72,15 @@ const Appointment = () => {
           minute: "2-digit",
         });
 
+        // slotDate = "08_08_2025"
         let day = currentDate.getDate()
         let month = currentDate.getMonth() + 1 
         let year = currentDate.getFullYear()
         const slotDate = day + "_" + month + "_" + year; 
         const slotTime = formattedTime
         const isSlotAvailable = docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime) ? false : true
-
+        // docInfo.slots_booked["08_08_2025"] = ["10:00 AM", "10:20 AM", "10:40 AM"];
+        
         if (isSlotAvailable) {
           // Add the time slot to the array with the full datetime and formatted time
           timeSlots.push({

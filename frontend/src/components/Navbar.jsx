@@ -73,7 +73,7 @@ const Navbar = () => {
             onClick={() => {
               navigate("/login");
             }}
-            className="bg-blue-600 font-bold text-white font-light py-3 px-8 rounded-full hidden md:block"
+            className="bg-blue-600 font-bold text-white  py-3 px-8 rounded-full hidden md:block"
           >
             Create Account
           </button>
@@ -85,6 +85,9 @@ const Navbar = () => {
           src={assets.menu_icon}
           alt=""
         />
+
+
+        
         {/*------------- Mobile Menu ------ */}
         <div
           className={`${

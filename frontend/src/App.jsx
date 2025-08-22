@@ -13,6 +13,7 @@ import Fotter from "./components/Fotter";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SymptomChatBot from "./components/SymptomChatBot";
 
 const App = () => {
   return (
@@ -30,7 +31,9 @@ const App = () => {
         <Route path="/my-appointments" element={<MyAppointments />} />
         <Route path="/appointment/:docId" element={<Appointment />} />
       </Routes>
-      <Fotter/>
+      <Fotter />
+      <SymptomChatBot />
+
     </div>
   );
 };

@@ -38,7 +38,7 @@ const MyProfile = () => {
       }
     } catch (err) {
       console.error(err);
-      toast.error(error.message);
+      toast.error(err.message);
     }
   };
 
