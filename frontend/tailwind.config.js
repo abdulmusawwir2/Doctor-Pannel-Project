@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': "#FFC0CB"
+        'primary': "#5e949c"
         // pink
       },
       gridTemplateColumns: {

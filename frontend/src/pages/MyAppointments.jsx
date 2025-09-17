@@ -160,10 +160,14 @@ const MyAppointments = () => {
               )}
               {!items.cancelled && (
                 <button
-                  onClick={() => cancelAppointment(items._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300"
+                  onClick={() => !items.payment && cancelAppointment(items._id)}
+                  disabled={items.payment}
+                  className={`text-sm text-center sm:min-w-48 py-2 border rounded transition-all duration-300 ${items.payment
+                    ? "text-gray-400 border-gray-300 cursor-not-allowed"
+                    : "text-stone-500 hover:bg-red-600 hover:text-white"
+                    }`}
                 >
-                  Cancel Appointment{" "}
+                  {items.payment ? "Cannot Cancel (Paid)" : "Cancel Appointment"}
                 </button>
               )}
               {items.cancelled && <button className="sm:min-w-48 py-2 border  border-red-500 text-red-500">Appointment Cancelled</button> }

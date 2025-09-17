@@ -18,7 +18,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
 
   return (
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
-      <h1 className="text-3xl font medium">Top Doctors to Book</h1>
+      <h1 className="text-3xl font medium">Related Doctors</h1>
       <p className="sm:w-1/3 text-center text-sm">
         Simply browse through our extensive list of trusted doctors.
       </p>
@@ -30,7 +30,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
               window.scrollTo(0, 0);
             }}
             key={index}
-            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500  hover:border-blue-500 border-2"
           >
             <img className="bg-blue-50 " src={item.image} alt={item.name} />
             <div className="p-4">
