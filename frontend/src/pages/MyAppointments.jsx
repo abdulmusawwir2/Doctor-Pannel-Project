@@ -63,7 +63,6 @@ const MyAppointments = () => {
       toast.error(err.message);
     }
   }
-
   const initPay = async (order) => {
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -79,6 +78,7 @@ const MyAppointments = () => {
         try {
           const { data } = await axios.post(backendUrl + '/api/user/verifyRazorpay', response, { headers: { token } })
           if (data.success) {
+            console.log("user payment success verification=")
             getUserAppointments()
             navigate('/my-appointments')
           }
@@ -101,7 +101,7 @@ const MyAppointments = () => {
     try {
       const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
       if (data.success) {
-        console.log(data.order)
+        console.log("orders=", data.order)
         initPay(data.order)
       }
     }
@@ -140,8 +140,8 @@ const MyAppointments = () => {
               </p>
               <p> {items.docData.speciality}</p>
               <p className="text-zinc-700 font-medium mt-1"> Address</p>
-              <p className="text-xs"> {items.docData.address.line1}</p>
-              <p className="text-xs"> {items.docData.address.line2}</p>
+              <p className="text-xs">{items?.docData?.address?.line1 || "—"}</p>
+              <p className="text-xs">{items?.docData?.address?.line2 || ""}</p>
               <p className="text-sm mt-1">
                 <span className="text-sm text-neutral-700 font-medium ">
                   Date & Time:
