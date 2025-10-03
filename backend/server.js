@@ -30,7 +30,7 @@ app.use("/api/doctor", doctorRouter);
 //localhost:400/api/doctor/list
 
 app.use("/api/user", userRouter);
-app.use("/api/chat", chatRouter);
+app.use("/api/chat",chatRouter);
 
 
 app.get("/", (req, res) => {
