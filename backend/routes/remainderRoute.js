@@ -139,9 +139,13 @@ router.post("/run-20m", async (req, res) => {
 
     // Work in IST (since your slotDate/slotTime come from frontend in IST)
 
+    // const nowIST = dayjs().tz("Asia/Kolkata");
+    // const start = nowIST.add(19, "minute");
+    // const end = nowIST.add(21, "minute");
+
     const nowIST = dayjs().tz("Asia/Kolkata");
     const start = nowIST; // now
-    const end = nowIST.add(30, "minute"); // now + 30 min
+    const end = nowIST.add(60, "minute"); // now + 30 min
 
     console.log("[CRON 20m] Time window (IST):");
     console.log("  nowIST :", nowIST.format("DD-MM-YYYY HH:mm:ss"));
