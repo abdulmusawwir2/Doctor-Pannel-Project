@@ -6,12 +6,8 @@ import connectCloudinary from "./config/cloudinary.js";
 import adminRouter from "./routes/adminRoute.js";
 import doctorRouter from "./routes/doctorRoute.js";
 import userRouter from "./routes/userRoute.js";
-<<<<<<< HEAD
 import chatRouter from "./routes/chatRoute.js";
-
-=======
 import reminderRouter from "./routes/remainderRoute.js";
->>>>>>> notification_feature
 
 //app config..
 const app = express();
