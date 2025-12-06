@@ -9,8 +9,8 @@ import { DoctorContext } from "../context/DoctorContext.jsx";
 const Login = () => {
   const [state, setState] = useState("Admin");
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@precripto.com");
+  const [password, setPassword] = useState("qwerty123");
   const { setAToken, backendUrl } = useContext(AdminContext);
   const { setDtoken } = useContext(DoctorContext);
 

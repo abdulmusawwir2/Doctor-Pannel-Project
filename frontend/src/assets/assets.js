@@ -38,11 +38,13 @@ import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
 import mediconnect from './mediconnect.jpg'
 import mediconnects from './mediconnect-2.png'
+import mediconnectlogo from './mediconnectlogo.png'
 
 
 export const assets = {
     mediconnects,
     mediconnect,
+    mediconnectlogo,
     appointment_img,
     header_img,
     group_profiles,
@@ -64,7 +66,7 @@ export const assets = {
 
 export const specialityData = [
     {
-        speciality: 'General physician',
+        speciality: 'General Physician',
         image: General_physician
     },
     {

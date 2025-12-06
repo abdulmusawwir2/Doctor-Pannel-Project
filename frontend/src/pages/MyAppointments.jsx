@@ -63,7 +63,6 @@ const MyAppointments = () => {
       toast.error(err.message);
     }
   }
-
   const initPay = async (order) => {
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -79,6 +78,7 @@ const MyAppointments = () => {
         try {
           const { data } = await axios.post(backendUrl + '/api/user/verifyRazorpay', response, { headers: { token } })
           if (data.success) {
+            console.log("user payment success verification=")
             getUserAppointments()
             navigate('/my-appointments')
           }
@@ -101,7 +101,7 @@ const MyAppointments = () => {
     try {
       const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
       if (data.success) {
-        console.log(data.order)
+        console.log("orders=", data.order)
         initPay(data.order)
       }
     }
@@ -140,8 +140,8 @@ const MyAppointments = () => {
               </p>
               <p> {items.docData.speciality}</p>
               <p className="text-zinc-700 font-medium mt-1"> Address</p>
-              <p className="text-xs"> {items.docData.address.line1}</p>
-              <p className="text-xs"> {items.docData.address.line2}</p>
+              <p className="text-xs">{items?.docData?.address?.line1 || "—"}</p>
+              <p className="text-xs">{items?.docData?.address?.line2 || ""}</p>
               <p className="text-sm mt-1">
                 <span className="text-sm text-neutral-700 font-medium ">
                   Date & Time:
@@ -160,10 +160,14 @@ const MyAppointments = () => {
               )}
               {!items.cancelled && (
                 <button
-                  onClick={() => cancelAppointment(items._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300"
+                  onClick={() => !items.payment && cancelAppointment(items._id)}
+                  disabled={items.payment}
+                  className={`text-sm text-center sm:min-w-48 py-2 border rounded transition-all duration-300 ${items.payment
+                    ? "text-gray-400 border-gray-300 cursor-not-allowed"
+                    : "text-stone-500 hover:bg-red-600 hover:text-white"
+                    }`}
                 >
-                  Cancel Appointment{" "}
+                  {items.payment ? "Cannot Cancel (Paid)" : "Cancel Appointment"}
                 </button>
               )}
               {items.cancelled && <button className="sm:min-w-48 py-2 border  border-red-500 text-red-500">Appointment Cancelled</button> }

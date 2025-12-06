@@ -123,7 +123,7 @@ const Doctors = () => {
             <div
               onClick={() => navigate(`/appointment/${item._id}`)}
               key={index}
-              className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+              className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500  hover:border-blue-500 border-2"
             >
               <img className="bg-blue-50" src={item.image} alt={item.name} />
               <div className="p-4">

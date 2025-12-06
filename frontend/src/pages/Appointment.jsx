@@ -49,17 +49,22 @@ const Appointment = () => {
       // Adjust the start time based on whether it's today or a future day
 
       // If it's today, set start time to the next hour or 10:00 AM, whichever is later
+      // If it's today, set start time to the next full hour or 10:00 AM, whichever is later
       if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(
-          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
-        );
-        // If the current minutes are greater than 30, round to the next hour, else to the half-hour mark
-        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 0 : 30);
+        const currentHour = today.getHours();
+
+        if (currentHour < 10) {
+          // Before 10 AM → start at 10:00
+          currentDate.setHours(10, 0, 0, 0);
+        } else {
+          // From 10 AM onward → start at next full hour (minutes always 00)
+          currentDate.setHours(currentHour + 1, 0, 0, 0);
+        }
       } else {
         // For future days, set the start time to 10:00 AM
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
+        currentDate.setHours(10, 0, 0, 0);
       }
+
 
       // Initialize an array to store time slots for the current day
       let timeSlots = [];
@@ -154,7 +159,7 @@ const Appointment = () => {
           />
         </div>
 
-        <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
+        <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0  hover:border-gray-900 border-2">
           {/* ------doc info :name,degree,experience--- */}
           <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
             {docInfo.name}{" "}

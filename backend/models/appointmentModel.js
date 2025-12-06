@@ -44,8 +44,15 @@ const appointmentSchema = mongoose.Schema({
     isCompleted: {
         type: Boolean,
         default: false
-    }
+    },
+    reminder20mSent: {
+    type: Boolean,
+    default: false,
+    },
+    reminder20mSentAt: Date,
 })
+
+appointmentSchema.index({ slotDate: 1, slotTime: 1, reminder20mSent: 1 });
 
 
 const appointmentModel = mongoose.models.appointment || mongoose.model('appointment', appointmentSchema);
