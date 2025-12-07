@@ -8,6 +8,7 @@ import doctorRouter from "./routes/doctorRoute.js";
 import userRouter from "./routes/userRoute.js";
 import chatRouter from "./routes/chatRoute.js";
 import reminderRouter from "./routes/remainderRoute.js";
+import "./routes/cron.js";
 
 //app config..
 const app = express();
