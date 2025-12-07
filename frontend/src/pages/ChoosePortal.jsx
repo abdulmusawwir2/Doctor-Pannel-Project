@@ -403,7 +403,7 @@ export default function ChoosePortal() {
 
                                 <div className="pt-1">
                                     <a
-                                        href="https://doctor-pannel-project-admin.vercel.app/"
+                                        href="https://doctor-pannel-project-admin.vercel.app/admin-dashboard"
                                         className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-medium px-5 py-2.5 hover:from-cyan-500 hover:to-blue-500 transition-all group"
                                     >
                                         Go to Admin / Doctor
