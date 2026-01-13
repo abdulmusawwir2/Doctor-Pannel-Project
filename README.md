@@ -187,6 +187,9 @@ Doctor-Pannel-Project/
 │   └── public/
 └── README.md         # This file
 ```
+##Razorpay Integration Workflow
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/f23a4af8-18f2-427a-ab0e-d0e60fbca381" />
+
 
 ## Contributing
 
