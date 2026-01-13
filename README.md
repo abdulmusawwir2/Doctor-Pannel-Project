@@ -190,6 +190,8 @@ Doctor-Pannel-Project/
 #Project Screenshots
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/74f93b09-76da-4a2b-88b8-3568fe82d692" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/56abdd27-c701-4afa-94b1-f14008c776ef" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ff17ce1-66a2-46ed-bc9d-1b83a5815af0" />
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5710f813-140f-4c3e-98df-a99bbc7c9624" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1bf732ba-ec9d-4496-883d-1397d59ee064" />
 
